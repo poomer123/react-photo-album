@@ -6,24 +6,9 @@ import registerServiceWorker from './registerServiceWorker';
 import {BrowserRouter as Router} from 'react-router-dom'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
+import reducers from './reducers'
 
-
-function countAge(state = 0, action) {
-    switch (action.type) {
-        case "UPAGE":
-            return state + 1
-        case "DOWNAGE":
-            return state - 1
-        default:
-            return state
-    }
-}
-
-const store = createStore(countAge)
-store.subscribe(()=>{console.warn('subscribe', store.getState())})
-store.dispatch({
-    type: "UPAGE"
-})
+const store = createStore(reducers)
 
 ReactDOM.render(
     <Provider store={store}>

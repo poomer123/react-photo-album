@@ -15,7 +15,7 @@ class Home extends Component {
 
 function mapStateToProps(state) {
   return {
-    age: state
+    age: state.counter
   }
 }
 
