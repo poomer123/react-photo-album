@@ -12,8 +12,19 @@ function countAge(state = 0, action) {
 }
 
 
+function users(state = {}, action) {
+    switch (action.type) {
+        case "LOAD_USERS":
+            return state
+        default:
+            return state
+    }
+}
+
+
 const reducers = combineReducers({
     counter: countAge,
+    users
 })
 
 export default reducers
