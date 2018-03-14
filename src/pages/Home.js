@@ -1,34 +1,32 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 
 class Home extends Component {
-  state = { age: 0}
   render() {
     return (
       <div>
-        <h1>อายุ: {this.state.age} ปี</h1>
-        <button onClick={this.upAge}>+ อายุ</button>
-        <button onClick={this.downAge}>- อายุ</button>
+        <h1>อายุ: {this.props.age} ปี</h1>
+        <button onClick={this.props.upAge}>+ อายุ</button>
+        <button onClick={this.props.downAge}>- อายุ</button>
       </div>
     )
   }
+}
 
-
-  upAge = () => {
-    this.setState((ps) => {
-        return {
-            age: ps.age + 1 
-            
-        }
-    })
-  }
-
-  downAge = () => {
-    this.setState((ps) => {
-        return {
-            age: ps.age - 1
-        }
-    })
+function mapStateToProps(state) {
+  return {
+    age: state
   }
 }
 
-export default Home;
+function mapDispatchToProps(dispatch) {
+  return {
+    downAge: () => {
+      dispatch({type: 'DOWNAGE'})
+    },
+    upAge: () => {
+      dispatch({type: 'UPAGE'})
+    }
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
