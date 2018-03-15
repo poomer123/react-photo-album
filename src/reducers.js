@@ -15,7 +15,7 @@ function countAge(state = 0, action) {
 function users(state = {}, action) {
     switch (action.type) {
         case "LOAD_USERS":
-            return state
+            return action.payload
         default:
             return state
     }

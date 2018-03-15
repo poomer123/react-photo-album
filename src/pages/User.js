@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { loadUsers } from '../actions'
 import UserList from '../components/users/UserList'
 
 class User extends Component {
@@ -16,12 +17,13 @@ class User extends Component {
   //     .then(rs => rs.json())
   //     .then(rs => this.setState({ data: rs }))
   //     .catch( e => this.setState({ err: e.message }))
-    this.props.loadUsers()
+    this.props.dispatch(loadUsers())
   }
 
   render() {
     // const { data, err } = this.state
     const { users } = this.props
+    console.log(users)
     let list = <div>Loading...</div>
 
     // if(data) {
@@ -35,6 +37,11 @@ class User extends Component {
     // if(err) {
     //   list = <h4>เกิดข้อผิดพลาด : {err}</h4>
     // }
+
+    if(users && users.length > 0) {
+      list = <UserList data={users} />
+    }
+
 
     return (
       <div>
@@ -51,14 +58,4 @@ function mapStateToProps(state) {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    loadUsers: () => {
-      dispatch({
-        type: 'LOAD_USERS'
-      })
-    }
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(User)
+export default connect(mapStateToProps)(User)
