@@ -12,10 +12,13 @@ function countAge(state = 0, action) {
 }
 
 
+const initialState = {isFailed: false, data: null}
 function users(state = {}, action) {
     switch (action.type) {
         case "LOAD_USERS":
-            return action.payload
+            return {...state, isFailed: false, data: action.payload}
+        case "LOAD_USERS_FAILED":
+            return {...state, isFailed: true, data: action.payload}
         default:
             return state
     }
