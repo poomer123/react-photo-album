@@ -13,7 +13,7 @@ function countAge(state = 0, action) {
 
 
 const initialState = {isFailed: false, data: null}
-function users(state = {}, action) {
+function users(state = initialState, action) {
     switch (action.type) {
         case "LOAD_USERS":
             return {...state, isFailed: false, data: action.payload}
@@ -24,10 +24,23 @@ function users(state = {}, action) {
     }
 }
 
+const initialAlbum = {isFailed: false, data: null}
+function albums(state = initialAlbum, action) {
+    switch (action.type) {
+        case "LOAD_ALBUMS":
+            return {...state, isFailed: false, data: action.payload}
+        case "LOAD_ALBUMS_FAILED":
+            return {...state, isFailed: true, data: action.payload}
+        default:
+            return state
+    }
+}
+
 
 const reducers = combineReducers({
     counter: countAge,
-    users
+    users,
+    albums,
 })
 
 export default reducers
