@@ -5,7 +5,7 @@ class Album extends Component {
     const { data } = this.props
     return (
         <h4>
-            {data.title}
+            {data.id}. {data.title}
         </h4>
     )
   }

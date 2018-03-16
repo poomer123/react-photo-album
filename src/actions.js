@@ -25,6 +25,9 @@ export const loadUsers = () => {
 
 export const loadAlbums = (userId) => {
     return (dispatch) => {
+        dispatch({
+            type: 'LOAD_ALBUMS_PENDING'
+        })
         fetch(`https://jsonplaceholder.typicode.com/albums?userId=${userId}`)
             .then(res => {
                 if( res.ok ) {
@@ -34,10 +37,12 @@ export const loadAlbums = (userId) => {
             })
             .then(rs => rs.json())
             .then(rs => {
-                dispatch({
-                    type: 'LOAD_ALBUMS',
-                    payload: rs
-                })
+                // setTimeout(() => {
+                    dispatch({
+                        type: 'LOAD_ALBUMS',
+                        payload: rs
+                    })
+                // }, 2000)
             })
         .catch( e => dispatch({
             type: 'LOAD_ALBUMS_FAILED',

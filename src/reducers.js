@@ -24,13 +24,15 @@ function users(state = initialState, action) {
     }
 }
 
-const initialAlbum = {isFailed: false, data: null}
+const initialAlbum = {isFailed: false, data: null, isLoading: false}
 function albums(state = initialAlbum, action) {
     switch (action.type) {
+        case "LOAD_ALBUMS_PENDING":
+        return {...state, isFailed: false, data: null, isLoading: true}
         case "LOAD_ALBUMS":
-            return {...state, isFailed: false, data: action.payload}
+            return {...state, isFailed: false, data: action.payload, isLoading: false}
         case "LOAD_ALBUMS_FAILED":
-            return {...state, isFailed: true, data: action.payload}
+            return {...state, isFailed: true, data: action.payload, isLoading: false}
         default:
             return state
     }

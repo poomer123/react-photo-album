@@ -21,7 +21,7 @@ class Album extends Component {
     let list = <div>Loading...</div>
 
     if (!albums.isFailed && albums.data) {
-        if (albums.data.length > 0) {
+        if (!albums.isLoading && albums.data.length > 0) {
             list = <AlbumList data={albums.data} />
         }
     }
