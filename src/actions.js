@@ -50,3 +50,30 @@ export const loadAlbums = (userId) => {
         }))
     }
 }
+
+
+export const loadPhotos = (albumId) => {
+    return (dispatch) => {
+        dispatch({
+            type: 'LOAD_PHOTOS_PENDING'
+        })
+        fetch(`https://jsonplaceholder.typicode.com/photos?albumId=${albumId}`)
+            .then(res => {
+                if( res.ok ) {
+                    return res
+                }
+                throw Error(res.status)
+            })
+            .then(rs => rs.json())
+            .then(rs => {
+                dispatch({
+                    type: 'LOAD_PHOTOS',
+                    payload: rs
+                })
+            })
+        .catch( e => dispatch({
+            type: 'LOAD_PHOTOS_FAILED',
+            payload: e.message
+        }))
+    }
+}

@@ -39,10 +39,26 @@ function albums(state = initialAlbum, action) {
 }
 
 
+const initialPhotos = {isFailed: false, data: null, isLoading: false}
+function photos(state = initialPhotos, action) {
+    switch (action.type) {
+        case "LOAD_PHOTOS_PENDING":
+        return {...state, isFailed: false, data: null, isLoading: true}
+        case "LOAD_PHOTOS":
+            return {...state, isFailed: false, data: action.payload, isLoading: false}
+        case "LOAD_PHOTOS_FAILED":
+            return {...state, isFailed: true, data: action.payload, isLoading: false}
+        default:
+            return state
+    }
+}
+
+
 const reducers = combineReducers({
     counter: countAge,
     users,
     albums,
+    photos
 })
 
 export default reducers
