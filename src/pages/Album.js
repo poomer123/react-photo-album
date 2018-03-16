@@ -21,8 +21,12 @@ class Album extends Component {
     let list = <div>Loading...</div>
 
     if (!albums.isFailed && albums.data) {
-        if (!albums.isLoading && albums.data.length > 0) {
-            list = <AlbumList data={albums.data} />
+        if (!albums.isLoading) {
+            if(albums.data.length > 0) {
+                list = <AlbumList data={albums.data} />
+            } else {
+                list = <h4>No Data</h4>
+            }
         }
     }
 
@@ -32,7 +36,7 @@ class Album extends Component {
 
     return (
       <div>
-        <h1>Album ID : {this.props.match.params.id} | {search}</h1>
+        <h1>Album by User ID : {this.props.match.params.id} | {search}</h1>
         {list}
       </div>
     )
