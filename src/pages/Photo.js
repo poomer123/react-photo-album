@@ -51,7 +51,7 @@ class Photo extends Component {
 
 function mapStateToProps(state) {
     return {
-        photos: state.Photos
+        photos: state.photos
     }
 }
 
