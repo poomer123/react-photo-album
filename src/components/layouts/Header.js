@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 
 class Header extends Component {
   render() {
@@ -9,10 +9,18 @@ class Header extends Component {
         <ul>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/user">Photo</Link></li>
+            <li><Link to="/signout">Sign Out</Link></li>
+            <li><a href="" onClick={this.signOut}>ออกจากระบบ</a></li>
         </ul>
       </div>
     );
   }
+
+  signOut = (e) => {
+    e.preventDefault()
+    localStorage.removeItem('access-token')
+    this.props.history.push('/signin')
+  }
 }
 
-export default Header;
+export default withRouter(Header)
