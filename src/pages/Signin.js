@@ -10,6 +10,7 @@ class Signin extends Component {
             <div>
                 <h1>Signin</h1>
                 <form onSubmit={this.handleSubmit}>
+                    <p>Username</p>
                     <div>
                         <input
                             type="text"
@@ -17,6 +18,7 @@ class Signin extends Component {
                             onChange={this.handleChange}
                         />
                     </div>
+                    <p>Password</p>
                     <div>
                         <input 
                             type="password"

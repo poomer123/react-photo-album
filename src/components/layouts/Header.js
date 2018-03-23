@@ -6,14 +6,21 @@ class Header extends Component {
     return (
       <div>
         <h1>Header</h1>
-        <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/user">Photo</Link></li>
-            <li><Link to="/signout">Sign Out</Link></li>
-            <li><a href="" onClick={this.signOut}>ออกจากระบบ</a></li>
-        </ul>
+        {this.renderLinks()}
       </div>
     );
+  }
+
+  renderLinks = () => {
+    if (localStorage.getItem('access-token')) {
+      return (
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/user">Photo</Link></li>
+          <li><a href="" onClick={this.signOut}>ออกจากระบบ</a></li>
+        </ul>
+      )
+    }
   }
 
   signOut = (e) => {
