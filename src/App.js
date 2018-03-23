@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from './components/layouts/Header'
 import { Route, Switch } from 'react-router-dom'
 
+import PrivateRoute from "./PrivateRoute";
 import Home from './pages/Home'
 import User from './pages/User'
 import Album from './pages/Album'
@@ -17,10 +18,10 @@ class App extends Component {
 
         <div className="container">
           <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/user" component={User} />
-            <Route path="/album/:id" component={Album} />
-            <Route path="/photo/:id" component={Photo} />
+            <PrivateRoute exact path="/" component={Home} />
+            <PrivateRoute path="/user" component={User} />
+            <PrivateRoute path="/album/:id" component={Album} />
+            <PrivateRoute path="/photo/:id" component={Photo} />
             <Route path="/signin" component={Signin} />
             <Route component={NotFound} />
           </Switch>
