@@ -7,6 +7,7 @@ import User from './pages/User'
 import Album from './pages/Album'
 import Photo from './pages/Photo'
 import NotFound from './pages/NotFound'
+import Signin from './pages/Signin';
 
 class App extends Component {
   render() {
@@ -20,6 +21,7 @@ class App extends Component {
             <Route path="/user" component={User} />
             <Route path="/album/:id" component={Album} />
             <Route path="/photo/:id" component={Photo} />
+            <Route path="/signin" component={Signin} />
             <Route component={NotFound} />
           </Switch>
         </div>
