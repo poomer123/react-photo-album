@@ -5,7 +5,7 @@ class AlbumList extends Component {
   render() {
     const { data } = this.props
     return (
-        <div>
+        <ul className="list-group">
             {
                 data && data.map(d => {
                     return (
@@ -13,7 +13,7 @@ class AlbumList extends Component {
                     )
                 })
             }
-        </div>
+        </ul>
     )
   }
 }

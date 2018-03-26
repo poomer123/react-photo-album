@@ -5,9 +5,9 @@ class Album extends Component {
   render() {
     const { data } = this.props
     return (
-        <h4>
+        <li className="list-group-item">
             <Link to={`/photo/${data.id}?albumName${data.title}`}>{data.id}. {data.title}</Link>
-        </h4>
+        </li>
     )
   }
 }

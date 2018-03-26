@@ -5,7 +5,7 @@ class PhotoList extends Component {
   render() {
       const { data } = this.props
     return (
-      <div>
+      <div className="row">
         {
           data && data.map(d => {
               return (

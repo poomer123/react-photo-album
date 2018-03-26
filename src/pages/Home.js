@@ -6,8 +6,8 @@ class Home extends Component {
     return (
       <div>
         <h1>อายุ: {this.props.age} ปี</h1>
-        <button onClick={this.props.upAge}>+ อายุ</button>
-        <button onClick={this.props.downAge}>- อายุ</button>
+        <button className="btn btn-primary" onClick={this.props.upAge}>+ อายุ</button>{' '}
+        <button className="btn btn-danger" onClick={this.props.downAge}>- อายุ</button>
       </div>
     )
   }

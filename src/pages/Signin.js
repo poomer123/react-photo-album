@@ -10,24 +10,28 @@ class Signin extends Component {
             <div>
                 <h1>Signin</h1>
                 <form onSubmit={this.handleSubmit}>
-                    <p>Username</p>
-                    <div>
+                    <div className="form-group">
+                        <label htmlFor="username">Username</label>
                         <input
                             type="text"
+                            className="form-control"
+                            id="username"
                             name="username"
                             onChange={this.handleChange}
                         />
                     </div>
-                    <p>Password</p>
-                    <div>
+                    <div className="form-group">
+                        <label htmlFor="password">Password</label>
                         <input 
                             type="password"
+                            className="form-control"
+                            id="password"
                             name="password"
                             onChange={this.handleChange}
                         />
                     </div>
 
-                    <button type="submit">Signin</button>
+                    <button type="submit" className="btn btn-primary">Sign In</button>
                 </form>
             </div>
         )
